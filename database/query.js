@@ -10,7 +10,7 @@ function index(req, res) {
 
 function show(req, res) {
     const id = req.params.id;
-    const sql = `SELECT *FROM movies LEFT JOIN reviews ON reviews.movie_id = movies.id WHERE movies.id = ?`;
+    const sql = `SELECT * FROM movies LEFT JOIN reviews ON reviews.movie_id = movies.id WHERE movies.id = ?`;
     connection.query(sql, [id], (err, results) => {
         if (err) return res.status(500).json({ error: 'Database query failed' });
         res.json(results);
